@@ -6,14 +6,17 @@ import QuoteDetail from "./pages/QuoteDetail";
 function App() {
   return (
     <Switch>
+      <Route path="/" exact>
+        <Redirect to="/quotes" />
+      </Route>
       <Route path="/quotes" exact>
         <AllQuotes />
       </Route>
       <Route path="/quotes/:quoteId">
-      <QuoteDetail />
+        <QuoteDetail />
       </Route>
       <Route path="/new-quote" exact>
-       <NewQuote />
+        <NewQuote />
       </Route>
     </Switch>
   );
