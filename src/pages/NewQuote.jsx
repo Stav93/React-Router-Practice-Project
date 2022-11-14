@@ -7,7 +7,7 @@ function NewQuote() {
     console.log(quoteData)
   }
   return (
-    <QuoteForm onAssQuote={addQuoteHandler}/>
+    <QuoteForm onAddQuote={addQuoteHandler}/>
   )
 }
 
