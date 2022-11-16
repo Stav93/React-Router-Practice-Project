@@ -28,7 +28,11 @@ const queryParamsObj = new URLSearchParams(location.search);
 
   const changeSortingHandler = () => {
     //re-render the page, the componnent
-    history.push(`${location.pathname}?sort=${(isSortingAscending ? "desc" : "asc")}`)
+    history.push({
+      pathname: location.pathname,
+      search: `?sort=${(isSortingAscending ? "desc" : "asc")}`
+    });
+    // history.push(`${location.pathname}?sort=${(isSortingAscending ? "desc" : "asc")}`)
     // history.push("/quotes/?sort=" + (isSortingAscending ? "desc" : "asc"));
   };
 
