@@ -1,10 +1,11 @@
 import React from "react";
-import { useParams, Route, Link } from "react-router-dom";
+import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
 
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import Comments from "../components/comments/Comments";
 
 function QuoteDetail() {
+  const match = useRouteMatch();
   const params = useParams();
 
   const Quotes_Example = [
@@ -21,16 +22,26 @@ function QuoteDetail() {
   return (
     <>
       <HighlightedQuote text={quote.text} author={quote.author} />
-      <Route path={`/quotes/${params.quoteId}`} exact>
+      <Route path={`${match.path}`} exact>
+        <div className="centered">
+          <Link className="btn--flat" to={`${match.url}/comments`}>
+            Load Comments
+          </Link>
+        </div>
+      </Route>
+      {/* <Route path={`/quotes/${params.quoteId}`} exact>
         <div className="centered">
           <Link className="btn--flat" to={`/quotes/${params.quoteId}/comments`}>
             Load Comments
           </Link>
         </div>
-      </Route>
-      <Route path={`/quotes/${params.quoteId}/comments`}>
+      </Route> */}
+      <Route path={`${match.path}/comments`}>
         <Comments />
       </Route>
+      {/* <Route path={`/quotes/${params.quoteId}/comments`}>
+        <Comments />
+      </Route> */}
       {/* <Route path="/quotes/:quoteId/comments"></Route> */}
     </>
   );
