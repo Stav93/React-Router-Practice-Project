@@ -37,9 +37,11 @@ const Comments = () => {
       </div>
     );
   }
-  if (status === "cpmpleted" && (loadedComments || loadedComments.length > 0)) {
+
+  if (status === "completed" && loadedComments && loadedComments.length > 0) {
     comments = <CommentsList comments={loadedComments} />;
   }
+
   if (status === "completed" && (!loadedComments || loadedComments.length === 0)) {
     comments = <p className="centered">No Comments Were Added Yet</p>;
   }
